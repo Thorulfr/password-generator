@@ -43,3 +43,5 @@ THEN the password is either displayed in an alert or written to the page
 ## Screenshot
 
 ## Contribution
+
+HTML and CSS provided. JavaScript written by Benjamin Holt.
