@@ -9,20 +9,12 @@ var lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
 var uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numericalChars = "0123456789";
 var specialChars = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
-var userCriteria = {
-  reset: function() {
-    this.passwordLength = 0;
-    this.lowercaseSelected = false;
-    this.uppercaseSelected = false;
-    this.numericalSelected = false;
-    this.specialSelected = false;
-  }
-}
 // END Assignments
 
 // BEGIN Function Declarations
 // Function to get user's criteria, validate it, and update criteria object if valid
 function getCriteria() {
+  var userCriteria = {};
   // Get the user's desired length and, just in case it's a float, round it to the nearest integer
   var userLength = Math.round(parseFloat(document.getElementById("password-length").value));
   // Assume user's desired length is invalid until tested below
@@ -57,19 +49,12 @@ function getCriteria() {
     userCriteria.numericalSelected = userNC;
     userCriteria.specialSelected = userSC;
   }
-  
-  alert("Your criteria have been saved!");
-}
-
-// Function to reset criteria fields
-function resetCriteria() {
-  formEl.reset();
-  userCriteria.reset();
-  alert("Your criteria have been reset.");
+  return userCriteria;
 }
 
 // Function to generate password
 function generatePassword() {
+  var userCriteria = getCriteria();
   // Create a temporary string that will be used to generate a password based on user's criteria
   var tempString = "";
   var userPassword = "";
@@ -106,10 +91,6 @@ function writePassword() {
 // END Function Declarations
 
 // BEGIN Other Logic
-// Add event listener to submit-criteria button
-submitCriteriaBtn.addEventListener("click", getCriteria);
-// Add event listener to reset-criteria button
-resetCriteriaBtn.addEventListener("click", resetCriteria);
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 // END Other Logic
