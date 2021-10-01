@@ -20,9 +20,17 @@ var formEl = document.querySelector("#criteria-form");
 // Variable assignments/declarations
 var lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
 var uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numericChars = "0123456789";
+var numericalChars = "0123456789";
 var specialChars = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
-var userCriteria = {};
+var userCriteria = {
+  reset: function() {
+    this.passwordLength = 0;
+    this.lowercaseSelected = false;
+    this.uppercaseSelected = false;
+    this.numericalSelected = false;
+    this.specialSelected = false;
+  }
+}
 // END Assignments
 
 // BEGIN Function Declarations
@@ -69,20 +77,44 @@ function getCriteria() {
 // Function to reset criteria fields
 function resetCriteria() {
   formEl.reset();
+  userCriteria.reset();
+  alert("Your criteria have been reset.");
 }
 
 // Function to generate password
 function generatePassword() {
-  // Create a temporary array that will be used to generate a password
-  tempArray = [];
+  // Create a temporary string that will be used to generate a password based on user's criteria
+  var tempString = "";
+  var userPassword = "";
+  if (userCriteria.lowercaseSelected) {
+    tempString += lowercaseChars;
+  }
 
+  if (userCriteria.uppercaseSelected) {
+    tempString += uppercaseChars;
+  }
+
+  if (userCriteria.numericalSelected) {
+    tempString += numericalChars;
+  }
+
+  if (userCriteria.specialSelected) {
+    tempString += specialChars;
+  }
+
+  // Generate password using temporary string and user's desired length
+  for (var i = 0; i < userCriteria.passwordLength; i++) {
+    userPassword += tempString.charAt(Math.floor(Math.random()*tempString.length));
+  }
+  return userPassword;
 }
 
 // Write password to the password display field
-function writePassword(userCriteria) {
-  // var password = generatePassword();
-  // var passwordText = document.querySelector("#password");
-  // passwordText.value = password;
+function writePassword() {
+  debugger;
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 }
 // END Function Declarations
 
