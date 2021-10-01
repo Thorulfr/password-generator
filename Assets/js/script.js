@@ -83,7 +83,6 @@ function generatePassword() {
 
 // Write password to the password display field
 function writePassword() {
-  debugger;
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
