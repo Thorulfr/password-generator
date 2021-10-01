@@ -15,21 +15,34 @@
 var generateBtn = document.querySelector("#generate");
 var submitCriteriaBtn = document.querySelector("#submit-criteria");
 var resetCriteriaBtn = document.querySelector("#reset-criteria");
+var formEl = document.querySelector("#criteria-form");
 var lowercaseChars = [];
 var uppercaseChars = [];
 var numericChars = [];
 var specialChars = [];
+var userCriteria = {};
 // END Assignments
 
 // BEGIN Function Declarations
-function getCriteria () {
-  console.log("Code location indicator");
+// Function to get user's criteria and return as object
+function getCriteria (event) {
+  event.preventDefault();
+  userCriteria.passwordLength = document.getElementById("password-length").value;
+  userCriteria.lowercaseSelected = document.getElementById("lowercase-chars").checked;
+  userCriteria.uppercaseSelected = document.getElementById("uppercase-chars").checked;
+  userCriteria.numericalSelected = document.getElementById("numerical-chars").checked;
+  userCriteria.specialSelected = document.getElementById("special-chars").checked;
+  console.log(userCriteria);
 }
 
+// Function to reset criteria fields
+function resetCriteria(event) {
+  event.preventDefault();
+  formEl.reset();
+}
 
-// Write password to the #password input
-function writePassword() {
-  getCriteria();
+// Write password to the password display field
+function writePassword(userCriteria) {
   // var password = generatePassword();
   // var passwordText = document.querySelector("#password");
   // passwordText.value = password;
@@ -37,7 +50,10 @@ function writePassword() {
 // END Function Declarations
 
 // BEGIN Other Logic
-// Add event listerner to 
+// Add event listener to submit-criteria button
+submitCriteriaBtn.addEventListener("click", getCriteria);
+// Add event listener to reset-criteria button
+resetCriteriaBtn.addEventListener("click", resetCriteria);
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 // END Other Logic

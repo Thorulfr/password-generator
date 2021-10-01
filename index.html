@@ -18,14 +18,14 @@
           <h2>Generate a Password</h2>
         </div>
         <div class="prompts">
-          <form>
+          <form id="criteria-form">
             <label for="password-length">Enter your desired password length (between 8 and 128 characters, inclusive).</label>
             <input type="text" placeholder="E.g., '23'" name="password-length" id="password-length"/>
             <div>
               Select which types of characters you'd like your generated password to include. (You must select at least one.)
             </div>
             <div>
-              <input type="checkbox" id="lowercase-chars" name="lowercase-chars" value="lowercase-chars-yes" checked/>
+              <input type="checkbox" id="lowercase-chars" name="lowercase-chars" value="lowercase-chars-yes"/>
               <label for="lowercase-chars">Lowercase</label>
             </div>
             <div>
@@ -41,8 +41,8 @@
               <label for="special-chars">Special (e.g., #$%^)</label>
             </div>
             <div>
-              <button type="submit" id="submit-criteria">Submit Criteria</button>
-              <button type="submit" id="reset-criteria">Reset Criteria</button>
+              <button id="submit-criteria" class="btn">Submit Criteria</button>
+              <button id="reset-criteria" class="btn">Reset Criteria</button>
             </div>
           </form>
         </div>
