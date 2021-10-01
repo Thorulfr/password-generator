@@ -24,20 +24,40 @@ var userCriteria = {};
 // END Assignments
 
 // BEGIN Function Declarations
-// Function to get user's criteria and return as object
-function getCriteria (event) {
-  event.preventDefault();
-  userCriteria.passwordLength = document.getElementById("password-length").value;
-  userCriteria.lowercaseSelected = document.getElementById("lowercase-chars").checked;
-  userCriteria.uppercaseSelected = document.getElementById("uppercase-chars").checked;
-  userCriteria.numericalSelected = document.getElementById("numerical-chars").checked;
-  userCriteria.specialSelected = document.getElementById("special-chars").checked;
-  console.log(userCriteria);
+// Function to get user's criteria, validate it, and update criteria object if valid
+function getCriteria() {
+  var userLength = Math.round(parseFloat(document.getElementById("password-length").value));
+  var userLengthValid = false;
+  var userLC = document.getElementById("lowercase-chars").checked;
+  var userUC = document.getElementById("uppercase-chars").checked;
+  var userNC = document.getElementById("numerical-chars").checked;
+  var userSC = document.getElementById("special-chars").checked;
+  if (userLength > 7 && userLength < 129) {
+    userLengthValid = true;
+  }
+
+  if (!userLengthValid && !userLC && !userUC && !userNC && !userSC) {
+    alert("You must enter a valid password length AND select at least one character type to generate your password.");
+    return false;
+  } else if (userLengthValid && !userLC && !userUC && !userNC && !userSC) {
+    alert("You must select at least one character type to generate your password.");
+    return false;
+  } else if (!userLengthValid) {
+    alert("You must enter a valid password length to generate your password.");
+    return false;
+  } else {
+    userCriteria.passwordLength = userLength;
+    userCriteria.lowercaseSelected = userLC;
+    userCriteria.uppercaseSelected = userUC;
+    userCriteria.numericalSelected = userNC;
+    userCriteria.specialSelected = userSC;
+  }
+  alert("Your criteria have been saved!");
+  // formEl.reset();
 }
 
 // Function to reset criteria fields
-function resetCriteria(event) {
-  event.preventDefault();
+function resetCriteria() {
   formEl.reset();
 }
 
