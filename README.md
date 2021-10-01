@@ -2,7 +2,7 @@
 
 ## Description
 
- to meet the below User Story and Acceptance Criteria.
+This project is an exercise in integrating JavaScript into a webpage built using only HTML and CSS. Its purpose is to generate a usable password based on criteria selected by the user, including length and character type(s).
 
 ## User Story
 
@@ -40,7 +40,11 @@ THEN the password is either displayed in an alert or written to the page
 
 ## Website
 
+<https://thorulfr.github.io/password-generator/>
+
 ## Screenshot
+
+![Screenshot](./assets/images/screenshot.png)
 
 ## Contribution
 
