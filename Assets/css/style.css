@@ -42,12 +42,24 @@ header {
   padding: 30px 40px;
 }
 
+.prompts::after,
 .card-header::after {
   content: " ";
   display: block;
   width: 100%;
   background: #e7e9eb;
   height: 2px;
+}
+
+.checkbox-holder {
+  display: flex;
+  justify-content: space-between;
+}
+
+#criteria-form{
+  padding: 10px 0px;
+  line-height: 1.5;
+  ;
 }
 
 .card-body {
