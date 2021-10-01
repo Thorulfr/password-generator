@@ -42,6 +42,7 @@ header {
   padding: 30px 40px;
 }
 
+.prompts::after,
 .card-header::after {
   content: " ";
   display: block;

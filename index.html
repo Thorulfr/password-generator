@@ -7,7 +7,7 @@
     <title>Password Generator</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
-  
+
   <body>
     <div class="wrapper">
       <header>
@@ -16,6 +16,35 @@
       <div class="card">
         <div class="card-header">
           <h2>Generate a Password</h2>
+        </div>
+        <div class="prompts">
+          <form>
+            <label for="password-length">Enter your desired password length (between 8 and 128 characters, inclusive).</label>
+            <input type="text" placeholder="E.g., '23'" name="password-length" id="password-length"/>
+            <div>
+              Select which types of characters you'd like your generated password to include. (You must select at least one.)
+            </div>
+            <div>
+              <input type="checkbox" id="lowercase-chars" name="lowercase-chars" value="lowercase-chars-yes" checked/>
+              <label for="lowercase-chars">Lowercase</label>
+            </div>
+            <div>
+              <input type="checkbox" id="uppercase-chars" name="uppercase-chars" value="uppercase-chars-yes"/>
+              <label for="uppercase-chars">Uppercase</label>
+            </div>
+            <div>
+              <input type="checkbox" id="numerical-chars" name="numerical-chars" value="numerical-chars-yes"/>
+              <label for="numerical-chars">Numerical</label>
+            </div>
+            <div>
+              <input type="checkbox" id="special-chars" name="special-chars" value="special-chars-yes"/>
+              <label for="special-chars">Special (e.g., #$%^)</label>
+            </div>
+            <div>
+              <button type="submit" id="submit-criteria">Submit Criteria</button>
+              <button type="submit" id="reset-criteria">Reset Criteria</button>
+            </div>
+          </form>
         </div>
         <div class="card-body">
           <textarea

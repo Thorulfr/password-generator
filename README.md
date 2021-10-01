@@ -44,4 +44,4 @@ THEN the password is either displayed in an alert or written to the page
 
 ## Contribution
 
-HTML and CSS provided. JavaScript written by Benjamin Holt.
+Basic HTML and CSS provided (see initial commit). JavaScript and all additional HTML and CSS written by Benjamin Holt.
